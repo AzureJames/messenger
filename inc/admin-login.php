@@ -2,6 +2,10 @@
 
 include 'connect.php';
 include 'header.php';
+include "messages.php";
+if (isset($message)){
+    echo $message;
+}
 
 if (isset($_POST['login'])){
     extract($_POST);
@@ -25,7 +29,7 @@ if (isset($_POST['login'])){
                 $_SESSION['user_id'] = $login_row['user_id'];
                 $_SESSION['a-unique-catbb-thingyyy'] = session_id();
                 $user_ide = $login_row['user_id'];
-                header("location:../index.php?m=login");
+                $m .= "Success";
             }
             else {
                 echo "1else";

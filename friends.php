@@ -28,8 +28,9 @@ if (isset($add_friend)){
             $friend_id = $get_one_row["user_id"];
             $friend_name = $get_one_row["user_name"];
             $my_id = $_SESSION['user_id'];
-            $msg_new_friend_sql = "INSERT INTO `mesr_msgs`(`user_id_recip`, `user_id_sender`, `user_name`, `msg`) 
-                                                   VALUES ('$friend_id', '$my_id', '$friend_name', 'Hello, will you be my friend?')";
+            $my_name = $_SESSION['user_name'];
+            $msg_new_friend_sql = "INSERT INTO `mesr_msgs`(`user_id_recip`, `user_id_sender`, `sender_name`, `msg`) 
+                                                        VALUES ('$friend_id', '$my_id', '$my_name', 'Hello, will you be my friend?')";
             $result = $conn->query($msg_new_friend_sql);
             if ($result != false) {
                 echo "Success";
