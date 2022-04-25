@@ -2,6 +2,9 @@
         $message = "";
         if(isset($m)) {
             switch($m) {
+                case 'login':
+                    $message = "<p>Logged in</p>";
+                    break;
                 case 'logout':
                     $message = "<p>Logged out</p>";
                     break;

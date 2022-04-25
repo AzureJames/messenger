@@ -1,7 +1,7 @@
 <?php
 
 include 'connect.php';
-include 'header.php';
+
 include "messages.php";
 if (isset($message)){
     echo $message;
@@ -30,25 +30,26 @@ if (isset($_POST['login'])){
                 $_SESSION['a-unique-catbb-thingyyy'] = session_id();
                 $user_ide = $login_row['user_id'];
                 $m .= "Success";
+                header("Location: ../index.php?m=login");
             }
             else {
-                echo "1else";
+                //echo "1else";
                 $validation = "<p>Password incorrect.</p>";
             }
             
 
         }
         else {
-            echo "2els";
+            //echo "2els";
             $validation = "<p>Failed to log in.</p>";
         }
     }
     else {
-        echo "3els";
+        //echo "3els";
         $validation .= "<p>Enter a username and password.</p>";
     }
 }
-
+include 'header.php';
 ?>
 
 

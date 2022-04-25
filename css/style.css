@@ -38,17 +38,31 @@ main {
     }
 }
 
-body .blue {
-    background-color: navy;
+ 
+
+main.blue {
+    background-color: rgb(190, 179, 181);
 }
 
-body .kawaii {
+main.kawaii {
+    background-color: rgb(184, 158, 212);
+}
+
+main.normal {
+    background-color: #d2e7e7;
+}    
+
+header.blue {
+    background-color: crimson;
+}
+
+header.kawaii {
     background-color: rgb(212, 33, 212);
 }
 
-body .normal {
-    background-color: #5c101f;
-}    
+header.normal {
+    background-color: #0ababd;
+}   
 
 /*typography*/
 h1, h2, h3 {
@@ -80,6 +94,10 @@ header img {
     width: 8rem; 
 }
 
+header a {
+    text-decoration: none;
+}
+
 header .container {
     display: flex;
     justify-content: flex-start;
@@ -97,7 +115,7 @@ nav {
 }
 
 header {
-    background-color: #5c101f;
+    background-color: darkturquoise;
     padding: 0.5rem;
     border: 1px solid gray;
 }
@@ -134,10 +152,20 @@ header .list {
         display: flex;
         flex-direction: row;
         gap: 1.5rem;
-        }
+    }
 }
 
 /* index */
+
+.homeflex {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.your-msg p {
+    color: navy;
+    text-align: right;
+}
 
 .heart {
     padding: 0.5rem;
@@ -234,9 +262,10 @@ fieldset {
 }
 
 textarea {
-    min-width: 300px;
+    min-width: 350px;
     max-width: 400px;
-    min-height: 20rem;
+    min-height: 15rem;
+    height: 15rem;
     max-height: 20rem;
 }
 

@@ -15,6 +15,7 @@ if(isset($_GET['theme'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Messaging site">
     <meta name="author" content="Azure James">
+    <meta http-equiv="refresh" content="2" > 
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>css/style.css"/> 
     <title>Azuur Messenger</title>
@@ -38,8 +39,8 @@ if(isset($_GET['theme'])){
         </div>
         <div class="container flex theme">
             <p>theme:</p>
-            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=blue">normal</a>
-            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=normal">blue</a>
+            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=normal">normal</a>
+            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=blue">blue</a>
             <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=kawaii">kawaii</a>
         </div>
     </header>
