@@ -157,10 +157,10 @@ header .list {
 
 /* index */
 
-.homeflex {
+/* .homeflex {
     display: flex;
     flex-direction: column-reverse;
-}
+} */
 
 .your-msg p {
     color: navy;

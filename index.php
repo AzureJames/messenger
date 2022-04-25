@@ -25,32 +25,24 @@ if (isset($message)){
 
     <?php if (isset($_GET['sender'])):  ?>
         <!-- <button type="button" onclick="window.location.reload(true)">Reload page</button> -->
-        <?php //show convo from one friend to you
+        <?php //show convo with one friend 
         echo "<a href='index.php'>all conversations</a>";
         $my_id = $_SESSION['user_id'];
         $sender = $_GET['sender'];
-        $show_msg_sql = "SELECT `sender_name`, `msg`, `msg_id` FROM `mesr_msgs` 
-        WHERE user_id_recip = '$my_id' AND user_id_sender = '$sender' 
+        $show_msg_sql = "SELECT `sender_name`, `user_id_sender`, `msg`, `msg_id` FROM `mesr_msgs` 
+        WHERE (user_id_recip = '$my_id' AND user_id_sender = '$sender') 
+        OR (user_id_recip = '$sender' AND user_id_sender = '$my_id')
         ORDER BY msg_id ASC";
         $show_msg_result = mysqli_query($conn, $show_msg_sql);
         if ($show_msg_result != false && $show_msg_result->num_rows>0): ?>
             <?php while ($row = mysqli_fetch_assoc($show_msg_result)): ?>
                 <?php extract($row); 
-                    $sender_save = $sender_name; ?>
-                <div class="home-msg"> 
-                    <p><?php echo $msg; ?></p>
-                </div>
-            <?php endwhile ?>
-        <? endif ?>
-        <?php //your msgs sent, below
-        $show_msg_sql = "SELECT `sender_name`, `msg`, `msg_id` FROM `mesr_msgs` 
-        WHERE user_id_recip = '$sender' AND user_id_sender = '$my_id' 
-        ORDER BY msg_id DESC";
-        $show_msg_result = mysqli_query($conn, $show_msg_sql);
-        if ($show_msg_result != false && $show_msg_result->num_rows>0): ?>
-            <?php while ($row = mysqli_fetch_assoc($show_msg_result)): ?>
-                <?php extract($row); ?>
-                <div class="your-msg"> 
+                    if ($user_id_sender != $my_id){ //sent to user
+                    $sender_save = $sender_name; 
+                    echo "<div class=\"home-msg\">"; } 
+                    else {
+                    echo "<div class=\"your-msg\">";
+                    }?>
                     <p><?php echo $msg; ?></p>
                 </div>
             <?php endwhile ?>
