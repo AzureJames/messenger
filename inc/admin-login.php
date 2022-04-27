@@ -14,10 +14,35 @@ if (isset($_POST['login'])){
 
     if (isset($user_name) &&  isset($password)) {
 
-        $login_sql = "SELECT user_id, user_name, password FROM mesr_user
-        WHERE user_name = '$user_name' ";
+        // $login_sql = "SELECT user_id, user_name, password FROM mesr_user
+        // WHERE user_name = '$user_name' ";
+        
+        // $login_result = mysqli_query($conn, $login_sql);
+
+        // if(mysqli_num_rows($login_result) == 1) {
+        //     $login_row = mysqli_fetch_assoc($login_result);
+        //     $pswd = $login_row['password'];
+
+        //     if(password_verify($password, $pswd)){
+        //         session_start();
+        //         $_SESSION['user_name'] = $login_row['user_name'];
+        //         $_SESSION['user_id'] = $login_row['user_id'];
+        //         $_SESSION['a-unique-catbb-thingyyy'] = session_id();
+        //         $user_ide = $login_row['user_id'];
+        //         $m .= "Success";
+        //         header("Location: ../index.php?m=login");
+        //     }
+        //     else {
+        //         //echo "1else";
+        //         $validation = "<p>Password incorrect.</p>";
+        //     }
+
+        $login_sql = $conn->prepare("SELECT user_id, user_name, password FROM mesr_user
+        WHERE user_name = ?");
+        $login_sql -> bind_param("s", $user_name);
+        $login_sql->execute();
     
-        $login_result = mysqli_query($conn, $login_sql);
+        $login_result = $login_sql->get_result();
 
         if(mysqli_num_rows($login_result) == 1) {
             $login_row = mysqli_fetch_assoc($login_result);

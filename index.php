@@ -18,6 +18,7 @@ if (isset($message)){
 ?>
 
 <h1>Messenger</h1>
+<h2>Conversations</h2>
 
 <?php if (isset($_SESSION['a-unique-catbb-thingyyy'])):  //if signed in ?>
 
@@ -25,10 +26,15 @@ if (isset($message)){
     <?php //what happens if this is empty? used to take up all ?>
 </div>
 
-        <?php $my_id = $_SESSION['user_id']; //this is friend list
-        $show_msg_sql = "SELECT DISTINCT `user_id_sender`, `sender_name` FROM `mesr_msgs` WHERE user_id_recip = '$my_id' 
-                ORDER BY msg_id ASC";
-        $show_msg_result = mysqli_query($conn, $show_msg_sql);
+       
+    
+
+        <?php $my_id = $_SESSION['user_id']; 
+        $show_msg_sql = $conn->prepare("SELECT DISTINCT `user_id_sender`, `sender_name` FROM `mesr_msgs` WHERE user_id_recip = ? 
+                ORDER BY msg_id ASC");
+        $show_msg_sql->bind_param("i", $my_id);
+        $show_msg_sql->execute();
+        $show_msg_result = $show_msg_sql->get_result();
         if ($show_msg_result != false && $show_msg_result->num_rows>0): ?>
         <?php while ($row = mysqli_fetch_assoc($show_msg_result)): ?>
             <?php extract($row); ?>
@@ -85,6 +91,7 @@ if (isset($message)){
 <? endif ?>
 
 </main>
+<?php include_once "inc/footer.php"; ?>
 </div>
 </body>
 

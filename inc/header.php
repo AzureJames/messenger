@@ -31,7 +31,8 @@ if(isset($_GET['theme'])){
                     <li><a href="<?php echo BASE_URL; ?>register.php">Register</a></li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['a-unique-catbb-thingyyy'])): ?>
-                        <li><a href="<?php echo BASE_URL; ?>friends.php">Friends</a></li> 
+                        <li><a href="<?php echo BASE_URL; ?>interests.php">Interests</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>friends.php">Add Friend</a></li> 
                         <li><a href="<?php echo BASE_URL; ?>logout.php">Logout</a></li>
                     <?php endif ?>
                 </ul>

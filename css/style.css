@@ -8,8 +8,17 @@
     display: block;
 }
 
-.flex {
-    display: flex;
+@media screen and (min-width: 718px) {
+    .flex {
+        display: flex;
+    }
+}
+
+
+.s-b {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .displaynone {
@@ -52,6 +61,10 @@ main.normal {
     background-color: #d2e7e7;
 }    
 
+main {
+    min-height: 80vh;
+}
+
 header.blue {
     background-color: crimson;
 }
@@ -63,6 +76,24 @@ header.kawaii {
 header.normal {
     background-color: #0ababd;
 }   
+
+footer.blue {
+    background-color: crimson;
+}
+
+footer.kawaii {
+    background-color: rgb(212, 33, 212);
+}
+
+footer.normal {
+    background-color: #0ababd;
+}   
+
+.goldbutton {
+    border: 1px solid goldenrod;
+padding: .5rem;
+background-color: gold;
+}
 
 /*typography*/
 h1, h2, h3 {
@@ -114,14 +145,17 @@ nav {
     align-self: center;
 }
 
-header {
+header, 
+footer{
     background-color: darkturquoise;
     padding: 0.5rem;
     border: 1px solid gray;
 }
 
 header a, 
-header li {
+header li,
+footer a,
+footer li {
     color: white;
     text-decoration: none;
     font-weight: bold;
