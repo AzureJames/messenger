@@ -22,36 +22,10 @@ if (isset($message)){
 <?php if (isset($_SESSION['a-unique-catbb-thingyyy'])):  //if signed in ?>
 
 <div class="homeflex">
+    <?php //what happens if this is empty? used to take up all ?>
+</div>
 
-    <?php if (isset($_GET['sender'])):  ?>
-        <!-- <button type="button" onclick="window.location.reload(true)">Reload page</button> -->
-        <?php //show convo with one friend 
-        echo "<a href='index.php'>all conversations</a>";
-        $my_id = $_SESSION['user_id'];
-        $sender = $_GET['sender'];
-        $show_msg_sql = "SELECT `sender_name`, `user_id_sender`, `msg`, `msg_id` FROM `mesr_msgs` 
-        WHERE (user_id_recip = '$my_id' AND user_id_sender = '$sender') 
-        OR (user_id_recip = '$sender' AND user_id_sender = '$my_id')
-        ORDER BY msg_id ASC";
-        $show_msg_result = mysqli_query($conn, $show_msg_sql);
-        if ($show_msg_result != false && $show_msg_result->num_rows>0): ?>
-            <?php while ($row = mysqli_fetch_assoc($show_msg_result)): ?>
-                <?php extract($row); 
-                    if ($user_id_sender != $my_id){ //sent to user
-                    $sender_save = $sender_name; 
-                    echo "<div class=\"home-msg\">"; } 
-                    else {
-                    echo "<div class=\"your-msg\">";
-                    }?>
-                    <p><?php echo $msg; ?></p>
-                </div>
-            <?php endwhile ?>
-        <? endif ?>
-
-
-    <?php else: ?>
-        <?php //show list of friends/conversations 
-        $my_id = $_SESSION['user_id'];
+        <?php $my_id = $_SESSION['user_id']; //this is friend list
         $show_msg_sql = "SELECT DISTINCT `user_id_sender`, `sender_name` FROM `mesr_msgs` WHERE user_id_recip = '$my_id' 
                 ORDER BY msg_id ASC";
         $show_msg_result = mysqli_query($conn, $show_msg_sql);
@@ -59,12 +33,23 @@ if (isset($message)){
         <?php while ($row = mysqli_fetch_assoc($show_msg_result)): ?>
             <?php extract($row); ?>
             <div class="home-msg"> 
-                <a href="<?php echo THIS_PAGE . "?sender=$user_id_sender";?>"><?php echo $sender_name; ?></a>
+                <a href="<?php echo "index.php?sender=$user_id_sender";?>"><?php echo $sender_name; ?></a>
             </div>
         <?php endwhile ?>
-        <? endif ?>
+        <?php else: ?>
+            <?php echo "no friends available"; ?>
+        <?php endif; ?>
+
+    <?php if (isset($_GET['sender'])):  ?>
+        <!-- <button type="button" onclick="window.location.reload(true)">Reload page</button> -->
+        <?php //show convo with one friend used to be here ?>
+        
+    <?php include_once "friend-list.php"; //friend list used to be here ?>
+
+
     <? endif ?>
     
+    <?php include_once "msg-send-form.php"; ?> 
 
     <?php //send a message function 
     if (isset($_POST['send_msg'])){
@@ -93,20 +78,9 @@ if (isset($message)){
     }
     ?>
 
-    <?php //if friend ID selected show LIMIT 30 messages from them plus form ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post" enctype="multipart/form-data">
-        <label for="send_to">to (username)</label>
-        <input type="text" id="send_to" name="send_to" value="<?php if(isset($sender_save)){echo htmlspecialchars($sender_save);} ?>">
 
-        <label for="msgtosend">message</label>
-        <textarea id="msgtosend" name="msgtosend"></textarea>
-<!-- 
-        <label for="file_to_upload">image</label>
-        <input type="file" name="file_to_upload" id="file_to_upload"> -->
+    
 
-        <input type="submit" value="Send" name="send_msg">
-    </form>
-</div>
 
 <? endif ?>
 

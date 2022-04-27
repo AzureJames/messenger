@@ -18,6 +18,7 @@ if(isset($_GET['theme'])){
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL;?>css/style.css"/> 
     <title>Azuur Messenger</title>
+    <!-- <script src="js/chattwo.js" defer></script> -->
 </head>
     <header class="<?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];}?>">
         <div class="container">
