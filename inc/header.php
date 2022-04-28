@@ -40,8 +40,9 @@ if(isset($_GET['theme'])){
         </div>
         <div class="container flex theme">
             <p>theme:</p>
-            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=blue">normal</a>
+            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=blue">red</a>
             <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=normal">blue</a>
+            <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=floral">floral</a>
             <a href="<?php echo strtok($_SERVER['REQUEST_URI']);?>?theme=kawaii">kawaii</a>
         </div>
     </header>

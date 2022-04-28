@@ -12,6 +12,7 @@
     .flex {
         display: flex;
     }
+
 }
 
 
@@ -61,38 +62,40 @@ main.normal {
     background-color: #d2e7e7;
 }    
 
+main.floral {
+background-color: rgb(156, 255, 255);
+}
+
 main {
     min-height: 80vh;
 }
 
-header.blue {
-    background-color: crimson;
-}
-
-header.kawaii {
-    background-color: rgb(212, 33, 212);
-}
-
-header.normal {
-    background-color: #0ababd;
-}   
-
+header.blue,
 footer.blue {
     background-color: crimson;
 }
 
+header.kawaii,
 footer.kawaii {
     background-color: rgb(212, 33, 212);
 }
 
+header.normal,
 footer.normal {
     background-color: #0ababd;
 }   
 
+header.floral,
+footer.floral {
+    background-color: rgb(246, 209, 0);
+}   
+
+
 .goldbutton {
     border: 1px solid goldenrod;
-padding: .5rem;
-background-color: gold;
+    padding: .5rem;
+    margin: .5rem 0rem;
+    background-color: gold;
 }
 
 /*typography*/
