@@ -16,8 +16,8 @@
 
         <?php if (isset($_GET['sender'])): ?>
             <?php echo "<a class='goldbutton' href='index.php'>all conversations<br></a>"; ?>
-            <a class="goldbutton" href="#bottom"><b>Scroll to Bottom</b><br></a>
-            <a class="goldbutton" href="<?php header("THIS_PAGE"); ?>"><b>Refresh Msgs</b><br></a>
+            <a class="goldbutton <?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];}?>" href="#bottom"><b>Scroll to Bottom</b><br></a>
+            <a class="goldbutton <?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];}?>" href="<?php header("THIS_PAGE"); ?>"><b>Refresh Msgs</b><br></a>
             <?php //show convo with one friend 
             $show_msg_sql = $conn->prepare("SELECT `sender_name`, `user_id_sender`, `msg`, `msg_id` FROM `mesr_msgs` 
             WHERE (user_id_recip = ? AND user_id_sender = ?) 
@@ -47,7 +47,7 @@
             <? endif ?>
 
             <a id="bottom"></a>
-            <a class="goldbutton" href="<?php header("https://azurejames.com/messenger/index.php?sender=$sender#bottom"); ?>"><b>Refresh & Scroll Up</b><br></a>
+            <a class="goldbutton <?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];}?>" href="<?php header("https://azurejames.com/messenger/index.php?sender=$sender#bottom"); ?>"><b>Refresh & Scroll Up</b><br></a>
         <? endif ?>
 
     <? endif ?>

@@ -7,7 +7,7 @@
 <!-- 
         <label for="file_to_upload">image</label>
         <input type="file" name="file_to_upload" id="file_to_upload"> -->
-<
-    <input type="submit" value="Send" class="send_msg" name="send_msg"> 
+
+    <input type="submit" value="Send" class="send_msg goldbutton <?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];}?>" name="send_msg"> 
     <!-- <button class="send_msg" name="send_msg">Send Message</button> -->
 </form>
